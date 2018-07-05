@@ -1,4 +1,5 @@
 require 'component/component_spec_helper'
+include StatesHelper
 
 describe Vehicle, type: :model do
 
@@ -16,6 +17,7 @@ describe Vehicle, type: :model do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:license_state) }
     it { is_expected.to validate_presence_of(:license_number) }
+    it { is_expected.to validate_inclusion_of(:license_state).in_array(us_state_abbreviations) }
 
 
     it 'should validate that :license_number is case-insensitively unique within the scope of :license_state' do

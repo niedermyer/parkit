@@ -4,6 +4,9 @@ class Vehicle < ApplicationRecord
             :license_number,
             presence: true
 
+  validates :license_state,
+            inclusion: { in: us_state_abbreviations }
+
   validates :license_number,
             uniqueness: { scope: :license_state,
                           case_sensitive: false,
