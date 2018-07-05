@@ -15,4 +15,31 @@ describe Space, type: :model do
     it { is_expected.to validate_presence_of(:number) }
     it { is_expected.to validate_uniqueness_of(:number).scoped_to([:floor, :section]) }
   end
+
+  describe '#identifier' do
+    subject { space.identifier }
+    let(:space) { create :space, number: 1, floor: floor, section: section }
+    let(:floor) { 1 }
+    let(:section) { 'A' }
+
+    context "when the space has a number, floor and a section" do
+      it { is_expected.to eq '1A-1' }
+    end
+
+    context "when the space has a number and floor but no section" do
+      let(:section) { nil }
+      it { is_expected.to eq '1-1' }
+    end
+
+    context "when the space has a number and section but no floor" do
+      let(:floor) { nil }
+      it { is_expected.to eq 'A-1' }
+    end
+
+    context "when the space has a number only" do
+      let(:floor) { nil }
+      let(:section) { nil }
+      it { is_expected.to eq '1' }
+    end
+  end
 end
