@@ -31,4 +31,8 @@ describe ParkingAssignment, type: :model do
     end
   end
 
+  describe 'associations' do
+    it { is_expected.to belong_to(:space) }
+    it { is_expected.to belong_to(:vehicle) }
+  end
 end

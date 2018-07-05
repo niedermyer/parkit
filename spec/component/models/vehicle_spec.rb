@@ -42,6 +42,10 @@ describe Vehicle, type: :model do
     end
   end
 
+  describe 'associations' do
+    it { is_expected.to have_many(:parking_assignments).dependent(:restrict_with_exception) }
+  end
+
   describe '.us_states_options' do
     it 'returns an array of arrays containing US states and their abbreviations' do
       expect(Vehicle.us_states_options).to eq [

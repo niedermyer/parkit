@@ -16,6 +16,10 @@ describe Space, type: :model do
     it { is_expected.to validate_uniqueness_of(:number).scoped_to([:floor, :section]) }
   end
 
+  describe 'associations' do
+    it { is_expected.to have_many(:parking_assignments).dependent(:restrict_with_exception) }
+  end
+
   describe '#identifier' do
     subject { space.identifier }
     let(:space) { create :space, number: 1, floor: floor, section: section }

@@ -61,6 +61,8 @@ class Vehicle < ApplicationRecord
     Vehicle.us_states_options.map{|_name, abb| abb}
   end
 
+  has_many :parking_assignments, dependent: :restrict_with_exception
+
   validates :license_state,
             :license_number,
             presence: true
