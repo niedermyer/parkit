@@ -1,0 +1,24 @@
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+          <%= link_to 'ParkIt', root_path, class: 'navbar-brand' %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#global-navigation" aria-controls="global-navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="global-navigation">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item <%= 'active' if current_page?(root_path) %>">
+                <%= link_to root_path, class: 'nav-link' do %>
+                  Check-In <%== '<span class="sr-only">(current)</span>' if current_page?(root_path) %>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>

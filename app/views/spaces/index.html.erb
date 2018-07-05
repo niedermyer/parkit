@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col">
+    <h1>Check-In</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div id="available-spaces">
+      <% if @spaces.any? %>
+        <table class="table table-striped">
+          <thead>
+          <th scope="col">Space</th>
+          </thead>
+          <tbody>
+          <% @spaces.each do |space| %>
+            <tr id="<%= dom_id(space) %>">
+              <td><%= space.identifier %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p class="text-danger"><strong>There are no spaces available.</strong></p>
+      <% end %>
+    </div>
+  </div>
+</div>

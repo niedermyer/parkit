@@ -1,1 +1,6 @@
 @import "bootstrap";
+
+header {
+  background: $primary;
+  margin-bottom: $grid-gutter-width;
+}
