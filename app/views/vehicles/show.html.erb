@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col">
+    <h1><%= @vehicle.license_state %> | <%= @vehicle.license_number %></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <table class="table">
+      <tbody>
+      <tr>
+        <th scope="row">Description</th>
+        <td><%= @vehicle.description %></td>
+      </tr>
+      <tr>
+        <th scope="row">Contact Name</th>
+        <td><%= @vehicle.contact_name %></td>
+      </tr>
+      <tr>
+        <th scope="row">Contact Phone</th>
+        <td><%= @vehicle.contact_phone %></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

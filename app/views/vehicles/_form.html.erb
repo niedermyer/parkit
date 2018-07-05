@@ -1,0 +1,26 @@
+<%= simple_form_for vehicle do |f| %>
+
+  <fieldset>
+    <legend>License Plate</legend>
+
+    <%= f.input :license_state, label: "State", collection: Vehicle.us_states_options %>
+    <%= f.input :license_number,
+                label: "Number",
+                hint: "May only include letters and numbers with a total length between 4 and 7 characters long. Do not include any dashes or spaces" %>
+  </fieldset>
+
+  <%= f.input :description %>
+
+  <fieldset>
+    <legend>Contact Information</legend>
+
+    <%= f.input :contact_name, label: "Name" %>
+    <%= f.input :contact_phone, label: "Phone" %>
+  </fieldset>
+
+  <div class="actions">
+    <%= f.button :submit, "Save Vehicle", class: 'btn btn-primary' %>
+    <%= link_to "Cancel", root_path %>
+  </div>
+
+<% end %>
