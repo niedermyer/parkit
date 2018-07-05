@@ -46,4 +46,29 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-commands-rspec'
+end
+
+group :test do
+  # Default test framework
+  gem 'rspec'
+  gem 'rspec-rails'
+
+  # Clean out database between test runs
+  gem 'database_cleaner'
+
+  # DSL for browser based testing
+  gem 'capybara'
+
+  # PhantomJS driver for capybara
+  gem 'poltergeist'
+
+  # See what your headless browser is seeing with save_and_open_page
+  gem 'launchy'
+
+  # Helpful RSpec matchers for rails
+  gem 'shoulda-matchers'
+
+  # Test object factory
+  gem 'factory_bot_rails'
 end

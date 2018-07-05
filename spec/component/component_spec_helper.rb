@@ -1,0 +1,7 @@
+require 'spec_helper'
+require 'support/rails'
+require 'support/database_cleaner'
+require 'support/factory_bot'
+require 'support/shoulda_matchers'
+require 'support/matchers/have_db_foreign_key'
+require 'support/fixture'
