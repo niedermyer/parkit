@@ -96,6 +96,7 @@ GEM
       thor (>= 0.14, < 2.0)
     launchy (2.4.3)
       addressable (~> 2.3)
+    libv8 (6.3.292.48.1)
     libv8 (6.3.292.48.1-x86_64-darwin-17)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -195,6 +196,9 @@ GEM
     seedbank (0.4.0)
     shoulda-matchers (3.1.2)
       activesupport (>= 4.0.0)
+    simple_form (4.0.1)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-commands-rspec (1.0.4)
@@ -255,6 +259,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   seedbank
   shoulda-matchers
+  simple_form
   spring
   spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)
