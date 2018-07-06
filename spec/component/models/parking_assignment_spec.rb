@@ -35,4 +35,15 @@ describe ParkingAssignment, type: :model do
     it { is_expected.to belong_to(:space) }
     it { is_expected.to belong_to(:vehicle) }
   end
+
+  describe 'scopes' do
+    describe '.active' do
+      let!(:archived_assignment) { create :parking_assignment, ended_at: Time.zone.now }
+      let!(:active_assignment) { create :parking_assignment, ended_at: nil }
+
+      it 'returns parking assignments that are currently active (assigned a vehicle)' do
+        expect(ParkingAssignment.active).to eq [active_assignment]
+      end
+    end
+  end
 end

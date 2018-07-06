@@ -8,4 +8,6 @@ class ParkingAssignment < ApplicationRecord
 
   validates :space, uniqueness: { scope: :ended_at }
 
+  scope :active, ->{ where( ended_at: nil ) }
+
 end
