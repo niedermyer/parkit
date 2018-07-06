@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col">
+    <h1>Vehicles</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-3">
+    <div id="add-vehicle" class="action-sidebar">
+      <%= link_to 'Add New Vehicle', new_vehicle_path, id: 'add-link', class: 'btn btn-primary action-link' %>
+    </div>
+  </div>
+
+  <div class="col-lg-9">
+    <% if @vehicles.any? %>
+      <div id="vehicles">
+        <table class="table table-striped">
+          <thead>
+          <th scope="col">License Plate</th>
+          <th scope="col">Description</th>
+          <th scope="col">Name</th>
+          <th scope="col">Phone</th>
+          </thead>
+          <tbody>
+          <% @vehicles.each do |vehicle| %>
+            <tr id="<%= dom_id(vehicle) %>">
+              <td><%= link_to vehicle.identifier, vehicle_path(vehicle) %></td>
+              <td><%= vehicle.description %></td>
+              <td><%= vehicle.contact_name %></td>
+              <td><%= vehicle.contact_phone %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <div id="vehicles">
+        <p class="text-muted">There are no vehicles registered</p>
+      </div>
+    <% end %>
+  </div>
+</div>

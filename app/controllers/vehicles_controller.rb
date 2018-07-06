@@ -7,7 +7,7 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = Vehicle.new(vehicle_params)
     @vehicle.save!
-    flash[:notice] = "The vehicle was successfully saved"
+    flash[:notice] = "The vehicle was successfully created"
     redirect_to vehicle_path(@vehicle)
 
   rescue ActiveRecord::RecordInvalid
@@ -19,6 +19,38 @@ class VehiclesController < ApplicationController
     @vehicle = Vehicle.find(params[:id])
   end
 
+  def index
+    @vehicles = Vehicle.all
+  end
+
+  def edit
+    @vehicle = Vehicle.find(params[:id])
+  end
+
+  def update
+    @vehicle = Vehicle.find(params[:id])
+    @vehicle.update_attributes!(vehicle_params)
+
+    flash[:notice] = "The vehicle was successfully updated"
+    redirect_to vehicle_path(@vehicle)
+  rescue ActiveRecord::RecordInvalid
+    flash[:alert] = "There was a problem updated the record. Check the form for errors"
+    render :edit
+  end
+
+  def destroy
+    @vehicle = Vehicle.find(params[:id])
+    @vehicle.destroy!
+
+    flash[:notice] = "The vehicle was successfully destroyed"
+    redirect_to vehicles_path
+  rescue ActiveRecord::RecordNotDestroyed
+    flash[:alert] = "The record could not be destroyed"
+    redirect_to vehicle_path(@vehicle)
+  rescue ActiveRecord::DeleteRestrictionError
+    flash[:alert] = "The record could not be destroyed since it is associated with a Parking Assignment"
+    redirect_to vehicle_path(@vehicle)
+  end
 
   private
 

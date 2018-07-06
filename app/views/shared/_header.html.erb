@@ -20,6 +20,11 @@
                   Spaces <%== '<span class="sr-only">(current)</span>' if current_page?(spaces_path) %>
                 <% end %>
               </li>
+              <li class="nav-item <%= 'active' if current_page?(vehicles_path) %>">
+                <%= link_to vehicles_path, class: 'nav-link' do %>
+                  Vehicles <%== '<span class="sr-only">(current)</span>' if current_page?(vehicles_path) %>
+                <% end %>
+              </li>
             </ul>
           </div>
         </nav>

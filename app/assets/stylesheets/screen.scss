@@ -14,11 +14,12 @@ h2 {
   font-size: 1.8rem;
 }
 
-#park-next-vehicle, #archive-parking-assignment {
+.action-sidebar {
   margin-top: 10px;
   margin-bottom: $grid-gutter-width;
 
   .action-link {
+    min-width: 200px;
     margin-bottom: 15px;
   }
 

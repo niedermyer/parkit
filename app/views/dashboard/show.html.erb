@@ -8,7 +8,7 @@
   <div class="col-lg-3">
 
     <% if @available_spaces.any? %>
-      <div id="park-next-vehicle">
+      <div id="park-next-vehicle" class="action-sidebar">
         <%= link_to 'Park Next Vehicle', space_parking_assignments_new_path(@available_spaces.first), id: 'parkit-link', class: 'btn btn-primary action-link' %>
 
         <p class="text-muted">Want to choose your space? <%= link_to 'See all spaces', spaces_path %></p>

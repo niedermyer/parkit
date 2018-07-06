@@ -7,11 +7,11 @@
 <div class="row">
   <div class="col-lg-3">
     <% if @parking_assignment.active? %>
-      <div id="archive-parking-assignment">
+      <div id="archive-parking-assignment" class="action-sidebar">
         <%= button_to 'Archive this Parking Assignment', parking_assignment_archive_path(@parking_assignment), id: 'archive-link', class: 'btn btn-danger action-link' %>
       </div>
       <% else %>
-      <div id="archive-parking-assignment" class="alert alert-info">
+      <div id="archive-parking-assignment" class="alert alert-info action-sidebar">
         <p>This parking assignment has been archived</p>
       </div>
     <% end %>
