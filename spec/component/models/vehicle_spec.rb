@@ -122,4 +122,20 @@ describe Vehicle, type: :model do
                                               )
     end
   end
+
+  describe '#identifier' do
+    let(:vehicle) { create :vehicle, license_state: 'NY', license_number: 'AABBCC' }
+
+    it 'returns a identifier string made up of license_state and license_number' do
+      expect(vehicle.identifier).to eq 'AABBCC | NY'
+    end
+  end
+
+  describe '#to_label' do
+    let(:vehicle) { create :vehicle, license_state: 'NJ', license_number: 'XYZ000', description: 'Yellow truck'}
+
+    it 'returns a descriptive label made up of license_state, license_number and description' do
+      expect(vehicle.to_label).to eq 'XYZ000 | NJ | Yellow truck'
+    end
+  end
 end

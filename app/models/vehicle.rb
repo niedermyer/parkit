@@ -77,4 +77,14 @@ class Vehicle < ApplicationRecord
 
   validates :license_number,
             format: { with: /\A[a-zA-Z0-9]{4,7}\z/, message: "is invalid format" }
+
+  def identifier
+    "#{license_number} | #{license_state}"
+  end
+
+  def to_label
+    label = identifier
+    label += " | #{description}" if description.present?
+    label
+  end
 end
