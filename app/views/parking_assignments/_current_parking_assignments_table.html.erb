@@ -1,6 +1,4 @@
 <% if parking_assignments.any? %>
-  <p class="text-muted">Click on a parking assignment to check the vehicle out.</p>
-
   <div id="active-parking-assignments" class="parking-assignments">
     <table class="table table-striped">
       <thead>
@@ -13,14 +11,14 @@
         <tr id="<%= dom_id(assignment) %>">
           <td><%= assignment.space_identifier %></td>
           <td><%= assignment.vehicle_to_label %></td>
-          <td><%= link_to 'Check Out', '#' %></td>
+          <td><%= link_to 'Check Out', parking_assignment_path(assignment) %></td>
         </tr>
       <% end %>
       </tbody>
     </table>
   </div>
 <% else %>
-  <div id="assigned-spaces">
+  <div id="active-parking-assignments">
     <p class="text-muted">There are no active parking assignments.</p>
   </div>
 <% end %>

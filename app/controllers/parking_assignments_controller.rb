@@ -21,6 +21,21 @@ class ParkingAssignmentsController < ApplicationController
     end
   end
 
+  def show
+    @parking_assignment = ParkingAssignment.find(params[:id])
+  end
+
+  def archive
+    parking_assignment = ParkingAssignment.active.find(params[:parking_assignment_id])
+    parking_assignment.ended_at = Time.zone.now
+    parking_assignment.save!
+    flash[:notice] = "The parking assignment was successfully archived"
+    redirect_to root_path
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "There was a problem archiving the parking assignment. Ensure that the vehicle was not already checked out"
+    redirect_to root_path
+  end
+
   private
 
   def parking_assignment_params

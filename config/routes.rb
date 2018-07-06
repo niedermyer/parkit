@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   end
 
   resources :vehicles, only: [:new, :create, :show]
-  resources :parking_assignments, only: [:create]
+  resources :parking_assignments, only: [:create, :show] do
+    post 'archive', to: 'parking_assignments#archive'
+  end
 
   root to: 'dashboard#show'
 

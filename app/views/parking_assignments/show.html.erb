@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col">
+    <h1>Parking Assignment for <%= @parking_assignment.space_identifier %> </h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-3">
+    <% if @parking_assignment.active? %>
+      <div id="archive-parking-assignment">
+        <%= button_to 'Archive this Parking Assignment', parking_assignment_archive_path(@parking_assignment), id: 'archive-link', class: 'btn btn-danger action-link' %>
+      </div>
+      <% else %>
+      <div id="archive-parking-assignment" class="alert alert-info">
+        <p>This parking assignment has been archived</p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-lg-9">
+    <h2>Activity</h2>
+    <table class="table">
+      <tbody>
+      <tr>
+        <th scope="row">Started</th>
+        <td><%= l(@parking_assignment.started_at, format: :date_time) %></td>
+      </tr>
+      <tr>
+        <th scope="row">Ended</th>
+        <td><%= l(@parking_assignment.ended_at, format: :date_time) unless @parking_assignment.active? %></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h2>Space Information</h2>
+    <table class="table">
+      <tbody>
+      <tr>
+        <th scope="row">Floor</th>
+        <td><%= @parking_assignment.space_floor %></td>
+      </tr>
+      <tr>
+        <th scope="row">Section</th>
+        <td><%= @parking_assignment.space_section %></td>
+      </tr>
+      <tr>
+        <th scope="row">Number</th>
+        <td><%= @parking_assignment.space_number %></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h2>Vehicle Information</h2>
+    <table class="table">
+      <tbody>
+      <tr>
+        <th scope="row">License Plate</th>
+        <td><%= @parking_assignment.vehicle_identifier %></td>
+      </tr>
+      <tr>
+        <th scope="row">Description</th>
+        <td><%= @parking_assignment.vehicle_description %></td>
+      </tr>
+      <tr>
+        <th scope="row">Contact Name</th>
+        <td><%= @parking_assignment.vehicle_contact_name %></td>
+      </tr>
+      <tr>
+        <th scope="row">Contact Phone</th>
+        <td><%= @parking_assignment.vehicle_contact_phone %></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

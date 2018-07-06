@@ -14,11 +14,11 @@ h2 {
   font-size: 1.8rem;
 }
 
-#park-next-vehicle {
+#park-next-vehicle, #archive-parking-assignment {
   margin-top: 10px;
   margin-bottom: $grid-gutter-width;
 
-  #parkit-link {
+  .action-link {
     margin-bottom: 15px;
   }
 

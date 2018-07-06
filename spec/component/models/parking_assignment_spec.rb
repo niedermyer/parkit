@@ -36,8 +36,14 @@ describe ParkingAssignment, type: :model do
     it { is_expected.to belong_to(:vehicle) }
 
     it { is_expected.to delegate_method(:identifier).to(:space).with_prefix }
+    it { is_expected.to delegate_method(:floor).to(:space).with_prefix }
+    it { is_expected.to delegate_method(:section).to(:space).with_prefix }
+    it { is_expected.to delegate_method(:number).to(:space).with_prefix }
     it { is_expected.to delegate_method(:identifier).to(:vehicle).with_prefix }
     it { is_expected.to delegate_method(:to_label).to(:vehicle).with_prefix }
+    it { is_expected.to delegate_method(:description).to(:vehicle).with_prefix }
+    it { is_expected.to delegate_method(:contact_name).to(:vehicle).with_prefix }
+    it { is_expected.to delegate_method(:contact_phone).to(:vehicle).with_prefix }
   end
 
   describe 'scopes' do
@@ -50,4 +56,22 @@ describe ParkingAssignment, type: :model do
       end
     end
   end
+
+  describe '#active?' do
+    subject{ assignment.active? }
+    let!(:assignment) { create :parking_assignment, ended_at: ended_at }
+
+    context 'when the parking assignment has NOT ended' do
+      let(:ended_at) { nil }
+
+      it { is_expected.to be true }
+    end
+
+    context 'when the parking assignment has ended' do
+      let(:ended_at) { Time.zone.now }
+
+      it { is_expected.to be false }
+    end
+  end
+
 end
