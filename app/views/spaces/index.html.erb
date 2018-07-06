@@ -31,29 +31,7 @@
 
   <div class="col-lg-9">
     <h2>Assigned</h2>
-    <% if @assigned_spaces.any? %>
-      <div id="assigned-spaces">
-        <table class="table table-striped">
-          <thead>
-          <th scope="col">Space</th>
-          <th scope="col">Vehicle</th>
-          <th scope="col"></th>
-          </thead>
-          <tbody>
-          <% @assigned_spaces.each do |space| %>
-            <tr id="<%= dom_id(space) %>">
-              <td><%= space.identifier %></td>
-              <td>ABC123 | NY | Red Honda Accord</td>
-              <td><%= link_to 'Check Out', '#' %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-      </div>
-    <% else %>
-      <div id="assigned-spaces">
-        <p class="text-muted">There are no vehicles to check out.</p>
-      </div>
-    <% end %>
+
+    <%= render partial: 'parking_assignments/current_parking_assignments_table', locals: { parking_assignments: @parking_assignments} %>
   </div>
 </div>

@@ -23,31 +23,6 @@
   <div class="col-lg-9">
     <h2>Current Parking Assignments</h2>
 
-    <% if @parking_assignments.any? %>
-      <p class="text-muted">Click on a parking assignment to check the vehicle out.</p>
-
-      <div id="active-parking-assignments" class="parking-assignments">
-        <table class="table table-striped">
-          <thead>
-          <th scope="col">Space</th>
-          <th scope="col">Vehicle</th>
-          <th scope="col"></th>
-          </thead>
-          <tbody>
-          <% @parking_assignments.each do |assignment| %>
-            <tr id="<%= dom_id(assignment) %>">
-              <td><%= assignment.space_identifier %></td>
-              <td><%= assignment.vehicle_to_label %></td>
-              <td><%= link_to 'Check Out', '#' %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-      </div>
-    <% else %>
-      <div id="assigned-spaces">
-        <p class="text-muted">There are no active parking assignments with vehicles to check out.</p>
-      </div>
-    <% end %>
+    <%= render partial: 'parking_assignments/current_parking_assignments_table', locals: { parking_assignments: @parking_assignments} %>
   </div>
 </div>
