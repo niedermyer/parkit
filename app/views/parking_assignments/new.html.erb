@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col">
+    <h1>New Parking Assignment for <%= @parking_assignment.space_identifier %></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <%= simple_form_for @parking_assignment do |f| %>
+
+      <%= f.input :space_id, as: :hidden %>
+      <%= f.association :vehicle,
+                        collection: @vehicles,
+                        hint: "Vehicle not listed in the dropdown? #{link_to 'Add a new Vehicle', new_vehicle_path}".html_safe %>
+
+      <div class="actions">
+        <%= f.button :submit, "Create Parking Assignment", class: 'btn btn-primary' %>
+        <%= link_to "Cancel", root_path %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

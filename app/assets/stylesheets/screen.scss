@@ -2,5 +2,69 @@
 
 header {
   background: $primary;
+  margin-bottom: $grid-gutter-width/2;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1.6rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+#park-next-vehicle {
+  margin-top: 10px;
   margin-bottom: $grid-gutter-width;
+
+  #parkit-link {
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: $small-font-size;
+    margin-bottom: 0;
+  }
+}
+
+#available-spaces {
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 0;
+      border-top: 1px solid $gray-400;
+
+      a {
+        display: block;
+        text-decoration: none;
+        padding: 8px 15px;
+
+        .id {
+          color: $body-color;
+        }
+
+        .action-symbol {
+          position: relative;
+          top: -1px;
+          font-size: 1.5rem;
+          line-height: 1;
+          float: right;
+          color: transparent;
+        }
+
+        &:hover {
+          span {
+            color: $link-hover-color;
+          }
+        }
+      }
+
+      &.odd {
+        background: $gray-100;
+      }
+    }
+  }
 }

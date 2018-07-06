@@ -1,7 +1,8 @@
 class SpacesController < ApplicationController
 
   def index
-    @spaces = Space.available
+    @available_spaces = Space.available
+    @assigned_spaces = Space.unavailable
   end
 
 end

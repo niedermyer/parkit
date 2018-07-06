@@ -34,6 +34,10 @@ describe ParkingAssignment, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:space) }
     it { is_expected.to belong_to(:vehicle) }
+
+    it { is_expected.to delegate_method(:identifier).to(:space).with_prefix }
+    it { is_expected.to delegate_method(:identifier).to(:vehicle).with_prefix }
+    it { is_expected.to delegate_method(:to_label).to(:vehicle).with_prefix }
   end
 
   describe 'scopes' do

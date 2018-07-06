@@ -12,7 +12,12 @@
             <ul class="navbar-nav mr-auto">
               <li class="nav-item <%= 'active' if current_page?(root_path) %>">
                 <%= link_to root_path, class: 'nav-link' do %>
-                  Check-In <%== '<span class="sr-only">(current)</span>' if current_page?(root_path) %>
+                  Dashboard <%== '<span class="sr-only">(current)</span>' if current_page?(root_path) %>
+                <% end %>
+              </li>
+              <li class="nav-item <%= 'active' if current_page?(spaces_path) %>">
+                <%= link_to spaces_path, class: 'nav-link' do %>
+                  Spaces <%== '<span class="sr-only">(current)</span>' if current_page?(spaces_path) %>
                 <% end %>
               </li>
             </ul>

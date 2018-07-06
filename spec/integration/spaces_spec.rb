@@ -8,20 +8,24 @@ describe 'Space management', type: :feature do
 
     scenario 'when spaces are available' do
       visit root_path
+      click_link 'Spaces'
 
-      expect(page).to have_content "1A-1"
-      expect(page).to have_content "1A-2"
+      within '#available-spaces' do
+        expect(page).to have_content "1A-1"
+        expect(page).to have_content "1A-2"
+      end
     end
 
     scenario 'when no spaces are available' do
       create :parking_assignment, space: space_1A1
       create :parking_assignment, space: space_1A2
 
-      visit root_path
+      visit spaces_path
 
-      expect(page).to have_content "There are no spaces available."
+      within '#available-spaces' do
+        expect(page).to have_content "There are no spaces available."
+      end
     end
   end
-
 end
 

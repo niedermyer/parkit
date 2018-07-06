@@ -14,7 +14,7 @@ feature 'Vehicle management', type: :feature do
 
     # redirected to show page
     within 'h1' do
-      expect(page).to have_content "PA | ABC123"
+      expect(page).to have_content "ABC123 | PA"
     end
 
     expect(page).to have_content "Red Make Model"

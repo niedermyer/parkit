@@ -1,28 +1,59 @@
 <div class="row">
   <div class="col">
-    <h1>Check-In</h1>
+    <h1>Spaces</h1>
   </div>
 </div>
 
 <div class="row">
-  <div class="col">
-    <div id="available-spaces">
-      <% if @spaces.any? %>
+  <div class="col-lg-3">
+    <h2>Available</h2>
+    <p class="text-muted">Click on a space to assign a vehicle to it.</p>
+
+    <% if @available_spaces.any? %>
+      <div id="available-spaces">
+        <ul>
+          <% @available_spaces.each do |space| %>
+            <li id="<%= dom_id(space) %>" class="<%= cycle('odd', 'even') %>">
+              <%= link_to space_parking_assignments_new_path(space) do %>
+                <span class="id"><%= space.identifier %></span>
+                <span class="action-symbol">&#8227;</span>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% else %>
+      <div id="available-spaces" class="alert alert-danger">
+        <p class="text-danger"><strong>There are no spaces available.</strong></p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-lg-9">
+    <h2>Assigned</h2>
+    <% if @assigned_spaces.any? %>
+      <div id="assigned-spaces">
         <table class="table table-striped">
           <thead>
           <th scope="col">Space</th>
+          <th scope="col">Vehicle</th>
+          <th scope="col"></th>
           </thead>
           <tbody>
-          <% @spaces.each do |space| %>
+          <% @assigned_spaces.each do |space| %>
             <tr id="<%= dom_id(space) %>">
               <td><%= space.identifier %></td>
+              <td>ABC123 | NY | Red Honda Accord</td>
+              <td><%= link_to 'Check Out', '#' %></td>
             </tr>
           <% end %>
           </tbody>
         </table>
-      <% else %>
-        <p class="text-danger"><strong>There are no spaces available.</strong></p>
-      <% end %>
-    </div>
+      </div>
+    <% else %>
+      <div id="assigned-spaces">
+        <p class="text-muted">There are no vehicles to check out.</p>
+      </div>
+    <% end %>
   </div>
 </div>

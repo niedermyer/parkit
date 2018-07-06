@@ -10,4 +10,13 @@ class ParkingAssignment < ApplicationRecord
 
   scope :active, ->{ where( ended_at: nil ) }
 
+  delegate :identifier,
+           to: :space,
+           prefix: true
+
+  delegate :identifier,
+           :to_label,
+           to: :vehicle,
+           prefix: true
+
 end
